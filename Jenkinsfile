@@ -12,7 +12,11 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-          kubernetesDeploy(configs: "frontend.yaml,backend.yaml,mongo-secret.yaml,", kubeconfigId: "eab67c1c-e532-434a-abbb-53b65f8f9cd3")
+          kubernetesDeploy(configs: "mongo-secret.yaml,", kubeconfigId: "eab67c1c-e532-434a-abbb-53b65f8f9cd3")
+          kubernetesDeploy(configs: "backend.yaml", kubeconfigId: "eab67c1c-e532-434a-abbb-53b65f8f9cd3")
+          kubernetesDeploy(configs: "frontend.yaml", kubeconfigId: "eab67c1c-e532-434a-abbb-53b65f8f9cd3")
+
+
         }
       }
     }
