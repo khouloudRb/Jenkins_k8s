@@ -30,6 +30,13 @@ pipeline {
         }
       }
     }
+    stage('Deploy Ingress') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "frontend-ingress.yaml", kubeconfigId: "eab67c1c-e532-434a-abbb-53b65f8f9cd3")
+        }
+      }
+    }
 
   }
 
